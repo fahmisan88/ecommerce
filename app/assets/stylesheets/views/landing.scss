@@ -1,0 +1,17 @@
+.landing{
+  .container-hero{
+    background-image: asset-url("market.jpeg");
+    height: 100vh;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .container{
+    color: white;
+  }
+
+}
