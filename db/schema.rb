@@ -10,16 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20160829092413) do
+=======
+ActiveRecord::Schema.define(version: 20160829094358) do
+>>>>>>> 11b0f6bcfb52c42de4df11408007a7d4b32c1043
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+<<<<<<< HEAD
   create_table "orders", force: :cascade do |t|
     t.string   "item_name"
     t.integer  "quantity"
     t.float    "price"
     t.float    "total"
+=======
+  create_table "items", force: :cascade do |t|
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.string   "image"
+    t.string   "item_name"
+    t.string   "item_description"
+    t.float    "price"
+  end
+
+  create_table "ordered_items", force: :cascade do |t|
+    t.integer  "item_id"
+    t.integer  "order_id"
+>>>>>>> 11b0f6bcfb52c42de4df11408007a7d4b32c1043
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -28,6 +47,14 @@ ActiveRecord::Schema.define(version: 20160829092413) do
     t.string   "username"
     t.string   "email"
     t.string   "password_digest"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "name"
+    t.string   "shipping_address"
+    t.string   "billing_address"
+    t.string   "billing_postcode"
+    t.string   "shipping_postcode"
+    t.string   "image"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
