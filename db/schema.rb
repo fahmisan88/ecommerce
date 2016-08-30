@@ -43,6 +43,8 @@ ActiveRecord::Schema.define(version: 20160829094358) do
     t.string   "billing_postcode"
     t.string   "shipping_postcode"
     t.string   "image"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
 end
