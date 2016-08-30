@@ -1,5 +1,6 @@
 class User < ApplicationRecord
+  has_secure_password
   has_many :orders
-  has_many :items
+  validates :username, length:{minimum: 2}, presence: true
 
 end

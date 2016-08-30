@@ -31,6 +31,15 @@ ActiveRecord::Schema.define(version: 20160829094358) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.string   "item_name"
+    t.integer  "quantity"
+    t.float    "price"
+    t.float    "total"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "username"
     t.string   "email"
@@ -43,8 +52,6 @@ ActiveRecord::Schema.define(version: 20160829094358) do
     t.string   "billing_postcode"
     t.string   "shipping_postcode"
     t.string   "image"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
   end
 
 end

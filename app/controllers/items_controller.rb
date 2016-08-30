@@ -1,27 +1,31 @@
 class ItemsController < ApplicationController
 
+  def index
+
+  end
+
   def new
     @item=Item.new
   end
 
   def create
-    @item = Item.new
+    @item = Item.new(item_params)
 
     if @item.save
-      flash[:success]
+      redirect_to root_path
     else
-      flash[:danger]
+      redirect_to root_path
     end
 
   end
 
   def edit
-    @item = Item.find_by(:id params[:id])
+    @item = Item.find(params[:id])
   end
 
   def update
-    @item = Item.find_by(:id params[:id])
-    if @item.save
+    @item = Item.find(params[:id])
+    if @item.update(item_params)
       flash[:success]
     else
       flash[:danger]
@@ -29,14 +33,15 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item = Item.find_by(:id params[:id])
+    @item = Item.find(params[:id])
     if @item.destroy
       flash[:success]
+    end
   end
 
   private
 
   def item_params
-    params.require(:item).permit(:image, :item_name, :item_description, :price)
-
+    params.require(:item).permit( :item_name, :item_description, :price)
+  end
 end

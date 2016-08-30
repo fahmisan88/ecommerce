@@ -20,12 +20,12 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find_by(params(:id))
-      if @user.update(user_params)
-        flash[:success]="Account Updated"
-        redirect_to root_path
-      else
-        redirect_to edit_user_path
-      end
+    if @user.update(user_params)
+      flash[:success]="Account Updated"
+      redirect_to root_path
+    else
+      redirect_to edit_user_path
+    end
   end
 
   def destroy
