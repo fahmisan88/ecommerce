@@ -15,11 +15,11 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find_by(:id params[:id])
+    @user = User.find_by(params(:id))
   end
 
   def update
-    @user = User.find_by(:id params[:id])
+    @user = User.find_by(params(:id))
       if @user.update(user_params)
         flash[:success]="Account Updated"
         redirect_to root_path
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find_by(:id params[:id])
+    @user = User.find_by(params(:id))
     if @user.destroy
       redirect_to root_path
     end
@@ -38,7 +38,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-   params.require(:user).permit(:email, :password, :password_confirmation, :username)
+   params.require(:user).permit(:email, :password, :username)
   end
 
 end
