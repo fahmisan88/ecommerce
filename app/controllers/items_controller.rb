@@ -18,7 +18,9 @@ class ItemsController < ApplicationController
       redirect_to root_path
     end
 
+
   end
+
 
   def edit
     @item = Item.find(params[:id])
@@ -43,14 +45,14 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find_by(id: params[:id])
   end
-  
+
   private
 
   def item_params
     params.require(:item).permit( :item_name, :item_description, :price)
-    @item=Item.new
-    @items = Item.all.order(created_at: :desc)
+
   end
+
 
 
 end

@@ -35,6 +35,9 @@ gem 'rails_admin', '>= 1.0.0.rc'
 gem 'omniauth'
 gem 'omniauth-facebook'
 
+gem 'carrierwave'
+gem 'mini_magick'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
