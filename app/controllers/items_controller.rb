@@ -40,6 +40,10 @@ class ItemsController < ApplicationController
     end
   end
 
+  def show
+    @item = Item.find_by(id: params[:id])
+  end
+  
   private
 
   def item_params
@@ -48,8 +52,5 @@ class ItemsController < ApplicationController
     @items = Item.all.order(created_at: :desc)
   end
 
-  def show
-    @item = Item.find_by(id: params[:id])
-  end
 
 end

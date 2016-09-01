@@ -32,6 +32,7 @@ gem 'font-awesome-rails'
 gem 'remotipart', github: 'mshibuya/remotipart'
 gem 'rails_admin', '>= 1.0.0.rc'
 
+gem 'omniauth'
 gem 'omniauth-facebook'
 
 # Use Capistrano for deployment
