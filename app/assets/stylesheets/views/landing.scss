@@ -44,4 +44,48 @@
     justify-content: center;
   }
 
+  .minipics {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 300px;
+    background-color: black;
+    border: 1px solid black
+
+    }
+
+    .image-setting {
+    width: 300px;
+    height: 30vh;
+  }
+  .minipics-child {
+    position: relative;
+  }
+
+  .minipics-child:hover .invisible-layout {
+    opacity: 0.5;
+    transition: all 0.3s ease-in-out;
+
+  }
+
+  .invisible-layout {
+    font-style: italic;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    display: flex;
+    justify-content:center;
+    background-color: yellow;
+    align-items: center;
+  }
+
+  .category-text {
+    color: white
+  }
+
+  .button{
+    color: black
+  }
+
 }

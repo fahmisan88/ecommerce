@@ -1,0 +1,28 @@
+<div class="item text-center">
+  <div class="background">
+    <h1 style="color: black; font-size: 50px">Items for sale</h1>
+  </div>
+
+
+  <div style="margin: 30px" class="form-group text-center">
+    <%= link_to "Sell Your Stuff", new_item_path, class: "btn btn-success btn-lg" %>
+  </div>
+
+  <div class="item-box text-center">
+    <% @items.each do |item| %>
+    <div class="item-topic">
+      <br>
+      <div>
+        <img src="http://placehold.it/250x250" alt="">
+      </div>
+      <h3 class="font-feature-1"><%= item.item_name %></h3>
+      <h5 class="font-feature-2"><%= item.item_description %></h5>
+      <h3 class="font-feature-1">RM<%= sprintf('%.2f',item.price )%></h3>
+      <%= link_to "View Item", item_path(item), class: "btn btn-primary" %>
+      <br>
+    </div>
+      <br>
+    <% end %>
+
+  </div>
+</div>
