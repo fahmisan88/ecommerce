@@ -5,12 +5,13 @@ class OrderedItemsController < ApplicationController
     @ordered_item = @order.ordered_items.new(ordered_item_params)
     @order.save
     session[:order_id]= @order.id
+    binding.pry
   end
 
   def update
     @order = current_order
     @ordered_item = @order.ordered_items.find(params[:id])
-    @ordered_item.update_attributes(order_item_params)
+    @ordered_item.update_attributes(ordered_item_params)
     @ordered_items = @order.order_items
   end
 
