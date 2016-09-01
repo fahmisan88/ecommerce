@@ -1,7 +1,8 @@
 class ItemsController < ApplicationController
 
   def index
-
+    @items = Item.all
+    @ordered_item = current_order.ordered_items.new
   end
 
   def new
