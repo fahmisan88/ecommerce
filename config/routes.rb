@@ -5,10 +5,11 @@ Rails.application.routes.draw do
   root to:'landing#index'
 
   resources :ordered_items, only: [:create, :update, :destroy]
-  resource :cart, only: [:show]
   resources :sessions, only: [:new, :create, :destroy]
   resources :users
   resources :items
+  resources :carts, only: [:show]
+  resources :order, only: [:show]
 
 
   get :cart, to: "carts#show"

@@ -35,7 +35,7 @@
     <%end%>
 
     <br>
-    <%= link_to "Remove", remove_item_path(id: item), method: :delete %>
+    <%= link_to "Remove item from cart", remove_item_path(id: item), method: :delete %>
     <br><br>
   </li>
 <% end %>
@@ -45,5 +45,12 @@
   <!-- Order Total: <%= number_to_currency(total, :unit => 'RM') %> -->
 <% end %>
 
-<a href="#" class="button">Place Order</a>
+<%= link_to "Continue Shopping", items_path, class: "btn btn-primary" %>
+
+<% if @items.empty? %>
+
+<% else %>
+<%= link_to "Checkout", order_path, class: "btn btn-primary" %>
+<% end %>
+
 </ul>
