@@ -6,7 +6,7 @@ class FacebookController < ApplicationController
   end
 
   def destroy
-    session[:id] = user.id
+    session.delete(:id)
     redirect_to root_url
   end
 

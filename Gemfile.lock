@@ -109,11 +109,8 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (5.0.5)
       railties (>= 3.2.16)
-<<<<<<< HEAD
-    jwt (1.5.4)
-=======
     json (2.0.2)
->>>>>>> master
+    jwt (1.5.4)
     kaminari (0.17.0)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -297,12 +294,9 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
-<<<<<<< HEAD
+  mini_magick
   omniauth
   omniauth-facebook
-=======
-  mini_magick
->>>>>>> master
   pg (~> 0.18)
   pry
   puma (~> 3.0)

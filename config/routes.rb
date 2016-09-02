@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :items , only: [:index, :show]
   resources :ordered_items, only: [:create, :update, :destroy]
   resource :cart, only: [:show]
+  resources :sessions, only: [:new, :create, :destroy]
 
   match 'auth/:provider/callback', to: 'facebook#create', via: [:get, :post]
   match 'auth/failure', to: redirect('/'), via: [:get, :post]
