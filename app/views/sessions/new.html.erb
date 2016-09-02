@@ -1,0 +1,39 @@
+<div class = "users">
+  <section class = " background">
+        <%= form_for(:user, url: sessions_path, method: :post) do |f| %>
+        <h1 class=" text-center">
+          Login
+        </h1>
+
+        <div class=" form-group">
+          <h4>Email</h4>
+          <%= f.email_field :email, id: "email_field", class: 'form-control' %>
+        </div>
+
+        <div class=" form-group">
+          <h4>Password</h4>
+          <%= f.password_field :password, autocomplete: 'off', id: "password_field", class: 'form-control' %>
+        </div>
+
+        <div class=" form-group text-center">
+          <%= f.submit "Login", class: "btn btn-success btn-lg" %>
+        </div>
+
+        <div class=" form-group text-center">
+          <li><%= link_to "New User", new_user_path %></li>
+        </div>
+
+
+        <% end %>
+      </section>
+
+    <div id="user-widget">
+      <% if current_user %>
+        Welcome <strong><%= current_user.name %></strong>!
+        <%= link_to "Sign out", signout_path, id: "sign_out" %>
+      <% else %>
+        <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+      <% end %>
+    </div>
+
+</div>
