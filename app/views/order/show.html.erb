@@ -1,10 +1,21 @@
 <h1>Order Summary</h1>
 
+<% total = 0 %>
+
 <% @items.each do |item| %>
-  <li>
-    <%= link_to item.item_name, item %>
+    <h4>
+    Item = <%= item.item_name %>
     <br>
-    <%= number_to_currency(item.price, :unit => 'RM') %>
+    Quantity = <%= item.quantity %>
     <br>
+    Subtotal = <%= number_to_currency(item.price, :unit => 'RM') %>
+    </h4>
+    <br>
+    <% total += item.price * item.quantity.to_i %>
 
 <% end %>
+
+<h3> TOTAL = <%= number_to_currency(total, :unit => 'RM') %> </h3>
+
+
+<br>
