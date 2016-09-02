@@ -31,6 +31,10 @@ gem 'font-awesome-rails'
 
 gem 'remotipart', github: 'mshibuya/remotipart'
 gem 'rails_admin', '>= 1.0.0.rc'
+
+gem 'omniauth'
+gem 'omniauth-facebook'
+
 gem 'carrierwave'
 gem 'mini_magick'
 
@@ -44,7 +48,8 @@ end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'pry'
+  gem 'pry', platform: :mri
+
   gem 'rspec-rails', '~> 3.5'
   gem 'factory_girl_rails'
   gem 'faker'
