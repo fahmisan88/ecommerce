@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :users
   resources :items
   resources :carts, only: [:show]
+  resources :order, only: [:show]
   get :cart, to: "carts#show"
   post :add_item, to: "carts#add_item"
   delete :remove_item, to: "carts#remove_item"
