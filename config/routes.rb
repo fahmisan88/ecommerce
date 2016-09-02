@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get :cart, to: "carts#show"
   post :add_item, to: "carts#add_item"
   delete :remove_item, to: "carts#remove_item"
+  patch :update_item, to: "carts#update_item"
 
   match 'auth/:provider/callback', to: 'facebook#create', via: [:get, :post]
   match 'auth/failure', to: redirect('/'), via: [:get, :post]
