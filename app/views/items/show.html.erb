@@ -2,4 +2,4 @@
 <h1><%= @item.item_name %></h1>
 <p><%= @item.item_description %></p>
 <h2>RM<%= sprintf('%.2f',@item.price ) %></h2>
-<%= link_to "Add To Cart", item_path(@item), class: "btn btn-primary" %>
+<%= link_to "Add To Cart", add_item_path(id: @item, quantity: 1), method: :post, class: "btn btn-primary" %>
