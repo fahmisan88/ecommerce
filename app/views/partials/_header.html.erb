@@ -18,8 +18,8 @@
        <ul class="nav navbar-nav navbar-right">
           <li><%= link_to "Shopping Cart", cart_path(:item) %></li>
          <li><%= link_to "About", about_path %></li>
-         <li><a href="#">Sign Up<span class="sr-only">(current)</span></a></li>
-         <li><a href="#">Log In<span class="sr-only">(current)</span></a></li>
+         <li><a href="<%= new_user_path %>">Sign Up<span class="sr-only">(current)</span></a></li>
+         <li><a href="<%= new_session_path %>">Log In<span class="sr-only"></span></a></li>
        </ul>
      </div>
    </div>
