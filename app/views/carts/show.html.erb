@@ -1,36 +1,38 @@
 <h1>Your Cart</h1>
 
 <% if @items.empty? %>
-  Your Cart Is Currently Empty
+Your Cart Is Currently Empty
 <% else %>
 <% end %>
 
-<% total = 0 %>
 
 <ul>
-<% @items.each do |item| %>
+  <% @items.each do |item| %>
   <li>
     <%= link_to item.item_name, item %>
     <br>
-
 
     <%= item.item_description %>
     <br>
     <%= number_to_currency(item.price, :unit => 'RM') %>
     <br>
-    <%= form_tag update_item_path(id: item.id), method: :patch do%>
 
-    <div class="row" >
-      <span class="small-1 large-1 columns pull-left">
-        <%= label_tag "Quantity:", nil, class: "right inline" %>
-      </span>
-      <span class="small-1 large-1 columns pull-left">
-        <%= text_field_tag :quantity, item.quantity %>
-      </span>
-      <span class="small-1 large-1 columns pull-left">
-        <%= submit_tag 'Update', class: "button" %>
-      </span>
-  </div>
+    <%= form_tag update_item_path(id: item.id), method: :patch do%>
+      <div class="row" >
+
+        <span class="small-1 large-1 columns pull-left">
+          <%= label_tag "Quantity:", nil, class: "right inline" %>
+        </span>
+
+        <span class="small-1 large-1 columns pull-left">
+          <%= text_field_tag :quantity, item.quantity %>
+        </span>
+
+        <span class="small-1 large-1 columns pull-left">
+          <%= submit_tag 'Update', class: "button" %>
+        </span>
+
+      </div>
 
     <%end%>
 
@@ -38,19 +40,23 @@
     <%= link_to "Remove item from cart", remove_item_path(id: item), method: :delete %>
     <br><br>
   </li>
-<% end %>
 
-<% if @items.empty? %>
-<% else %>
-  <!-- Order Total: <%= number_to_currency(total, :unit => 'RM') %> -->
-<% end %>
 
-<%= link_to "Continue Shopping", items_path, class: "btn btn-primary" %>
+  <% end %>
+  <h3>Total: <%=@total_price%></h3>
 
-<% if @items.empty? %>
 
-<% else %>
-<%= link_to "Checkout", order_path, class: "btn btn-primary" %>
-<% end %>
+
+  <% if @items.empty? %>
+  <% else %>
+  <% end %>
+
+  <%= link_to "Continue Shopping", items_path, class: "btn btn-primary" %>
+
+  <% if @items.empty? %>
+
+  <% else %>
+  <%= link_to "Checkout", orders_path(price: @total_price),method: :post, class: "btn btn-primary" %>
+  <% end %>
 
 </ul>
