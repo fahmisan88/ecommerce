@@ -4,11 +4,13 @@ class CartsController < ApplicationController
 
   def show
     @items = []
+    @total_price = 0.0;
+    
     @cart.each do |item_id,quantity|
       item = Item.find_by(id: item_id)
-      item.define_singleton_method(:quantity) do
-        quantity
-      end
+      item.define_singleton_method(:quantity) { quantity }
+      price = item.price * quantity.to_f
+      @total_price += price
       @items << item
     end
   end
@@ -27,7 +29,7 @@ class CartsController < ApplicationController
     if @cart[params[:id]]
       @cart[params[:id]] = params[:quantity]
     end
-    redirect_to cart_path
+    redirect_to cart_path(:item)
   end
 
   def remove_item
