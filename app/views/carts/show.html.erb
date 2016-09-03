@@ -56,7 +56,7 @@ Your Cart Is Currently Empty
   <% if @items.empty? %>
 
   <% else %>
-  <%= link_to "Checkout", orders_path(price: @total_price),method: :post, class: "btn btn-primary" %>
+  <%= link_to "Checkout", orders_path(price: @total_price, user_id: current_user.id),method: :post, class: "btn btn-primary" %>
   <% end %>
 
 </ul>
