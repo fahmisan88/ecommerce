@@ -45,12 +45,6 @@ Your Cart Is Currently Empty
   <% end %>
   <h3>Total: <%=@total_price%></h3>
 
-
-
-  <% if @items.empty? %>
-  <% else %>
-  <% end %>
-
   <%= link_to "Continue Shopping", items_path, class: "btn btn-primary" %>
 
   <% if @items.empty? %>

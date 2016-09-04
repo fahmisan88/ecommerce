@@ -38,6 +38,8 @@ gem 'omniauth-facebook'
 gem 'carrierwave'
 gem 'mini_magick'
 
+gem 'httparty'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
