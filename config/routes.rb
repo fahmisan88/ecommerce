@@ -21,4 +21,8 @@ Rails.application.routes.draw do
   match 'auth/failure', to: redirect('/'), via: [:get, :post]
   match 'signout', to: 'facebook#destroy', as: 'signout', via: [:get, :post]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  scope '/webhooks', controller: :webhooks do
+    post 'payment-callback', to: 'webhooks#payment_callback', as: :payment_callback
+  end
 end

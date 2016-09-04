@@ -1,9 +1,10 @@
 class OrdersController < ApplicationController
 
   def create
-    @item = show
+    @item = get_cart
+
     @orders = Order.create(total: params[:price], user_id: params[:user_id])
-    
+
     @item.each do |f|
       @ordereditem = @orders.ordered_items.new(item_id: f.id )
       binding.pry
@@ -11,7 +12,7 @@ class OrdersController < ApplicationController
 
   end
 
-  def show
+  def get_cart
     if cookies[:cart]
       @cart = JSON.parse(cookies[:cart])
     else
