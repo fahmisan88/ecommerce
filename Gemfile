@@ -41,6 +41,7 @@ gem 'mini_magick'
 
 gem 'httparty'
 gem 'searchkick'
+gem 'figaro'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

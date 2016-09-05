@@ -1,7 +1,6 @@
 class SessionsController < ApplicationController
 
   def new
-
   end
 
   def create
@@ -29,7 +28,6 @@ class SessionsController < ApplicationController
 
   def destroy
     session.delete(:id)
-
     redirect_to root_path
     flash[:success] = "You've been logged out"
   end
