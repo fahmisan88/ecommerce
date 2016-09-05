@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20160903121558) do
     t.string   "bill_url"
     t.datetime "due_at"
     t.datetime "paid_at"
-    t.integer  "status",    default: 0
+    t.integer  "status"
   end
 
   create_table "users", force: :cascade do |t|

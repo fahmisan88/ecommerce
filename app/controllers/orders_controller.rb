@@ -7,7 +7,7 @@ class OrdersController < ApplicationController
 
     @item.each do |f|
       @ordereditem = @orders.ordered_items.new(item_id: f.id )
-      binding.pry
+
     end
 
   end
