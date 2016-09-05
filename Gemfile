@@ -39,6 +39,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 
 gem 'httparty'
+gem 'searchkick'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
