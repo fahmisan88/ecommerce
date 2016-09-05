@@ -4,7 +4,7 @@ class Billplz
     HTTParty.post("https://www.billplz.com/api/v3/bills/".to_str,
     headers: {'Content-Type' => 'application/json','Accept '=> 'application/json' },
     body: {
-      collection_id:      "6xaolp9e",
+      collection_id:      ENV["BILLPLZ_APPID"],
       email:              order.user.email,
       name:               "test user",
       amount:             order.total*100,
@@ -16,7 +16,7 @@ class Billplz
       reference_1_label:  'Order Booking Ref',
       reference_1:        order.id
     }.to_json,
-    basic_auth: { username: "f236efbc-8665-4599-a1c2-5327082504dc"}
+    basic_auth: { username: ENV["BILLPLZ_KEY"]}
     )
   end
 
@@ -24,7 +24,7 @@ class Billplz
     order = order.find(order_id)
     url = "https://www.billplz.com/api/v3/bills" + order.bill_id
     arguments = { headers: {'Content-Type' => 'application/json', 'Accept' => 'application/json'},
-                  basic_auth: { username: "f236efbc-8665-4599-a1c2-5327082504dc"}
+                  basic_auth: { username: ENV["BILLPLZ_KEY"]}
                   }
     HTTParty.get(url, arguments)
   end
