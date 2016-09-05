@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
     if @user.save
       redirect_to root_path
+      flash[:success]="User created"
     else
       redirect_to root_path
     end
@@ -21,8 +22,8 @@ class UsersController < ApplicationController
   def update
     @user = User.find_by(params(:id))
     if @user.update(user_params)
-      flash[:success]="Account Updated"
       redirect_to root_path
+      flash[:success]="Account Updated"
     else
       redirect_to edit_user_path
     end
