@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
   def new
-    
+
   end
 
   def create
@@ -10,8 +10,16 @@ class SessionsController < ApplicationController
 
     if user
       session[:id] = user.id
-      flash[:success] = "Welcome back #{current_user.username}"
-      redirect_to root_path
+
+      if user.admin?
+        redirect_to rails_admin_path
+        flash[:success] = "Welcome back #{current_user.username}"
+
+      else
+        redirect_to root_path
+        flash[:success] = "Welcome back #{current_user.username}"
+      end
+
     else
       flash[:danger] = "Error logging in"
       render :new
@@ -21,8 +29,9 @@ class SessionsController < ApplicationController
 
   def destroy
     session.delete(:id)
-    flash[:success] = "You've been logged out"
+
     redirect_to root_path
+    flash[:success] = "You've been logged out"
   end
 
   private

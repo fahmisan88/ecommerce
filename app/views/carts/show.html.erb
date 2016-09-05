@@ -1,17 +1,15 @@
 <h1>Your Cart</h1>
 
 <% if @items.empty? %>
-Your Cart Is Currently Empty
+  <h2>Your Cart Is Currently Empty</h2>
 <% else %>
 <% end %>
-
 
 <ul>
   <% @items.each do |item| %>
   <li>
     <%= link_to item.item_name, item %>
     <br>
-
     <%= item.item_description %>
     <br>
     <%= number_to_currency(item.price, :unit => 'RM') %>
@@ -41,7 +39,6 @@ Your Cart Is Currently Empty
     <br><br>
   </li>
 
-
   <% end %>
   <h3>Total: <%=@total_price%></h3>
 
@@ -50,7 +47,12 @@ Your Cart Is Currently Empty
   <% if @items.empty? %>
 
   <% else %>
-  <%= link_to "Checkout", orders_path(price: @total_price, user_id: current_user.id),method: :post, class: "btn btn-primary" %>
+    <% if current_user %>
+      <%= link_to "Checkout", orders_path(price: @total_price, user_id: current_user.id),method: :post, class: "btn btn-primary" %>
+    <% else %>
+      <p>You must login to Checkout your items</p>
+    <%end%>
+
   <% end %>
 
 </ul>

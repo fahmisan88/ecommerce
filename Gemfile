@@ -34,6 +34,7 @@ gem 'rails_admin', '>= 1.0.0.rc'
 
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'pundit'
 
 gem 'carrierwave'
 gem 'mini_magick'

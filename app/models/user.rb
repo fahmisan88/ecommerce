@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_secure_password validations: false
   has_many :orders
   validates :username, length:{minimum: 2}, presence: true
+  enum role: [:user, :moderator, :admin]
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |user|
