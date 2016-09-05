@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20160905032443) do
     t.datetime "due_at"
     t.datetime "paid_at"
     t.integer  "status",     default: 0
+
   end
 
   create_table "users", force: :cascade do |t|

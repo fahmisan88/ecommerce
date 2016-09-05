@@ -20,7 +20,7 @@ class OrdersController < ApplicationController
     # end
 
   end
-  # 
+  #
   # def get_cart
   #   if cookies[:cart]
   #     @cart = JSON.parse(cookies[:cart])

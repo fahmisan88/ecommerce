@@ -5,7 +5,7 @@ class OrderedItemsController < ApplicationController
     @ordered_item = @order.ordered_items.new(ordered_item_params)
     @order.save
     session[:order_id]= @order.id
-    binding.pry
+  
   end
 
   def update
