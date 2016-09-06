@@ -16,6 +16,7 @@ class CartsController < ApplicationController
   end
 
   def add_item
+    flash[:success] = "Added To Cart"
     if @cart[params[:id]]
       quantity = params[:quantity].to_i
       quantityOld = @cart[params[:id]].to_i
@@ -23,6 +24,7 @@ class CartsController < ApplicationController
     else
       @cart[params[:id]] = params[:quantity]
     end
+    flash[:success] = "Added To Cart"
   end
 
   def update_item
