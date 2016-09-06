@@ -5,7 +5,7 @@ class WebhooksController < ApplicationController
     @order = Order.find_by(bill_id: params[:id])
     response = Billplz.check_status(@order.id)
     if (response['paid'] == true) && (response['state']=='paid')
-      @order.update_attributes(state: 'paid')
+      @order.update_attributes(status: 1, paid_at: params[:paid_at])
     end
       render body: nil
   end

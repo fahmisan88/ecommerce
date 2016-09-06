@@ -1,5 +1,11 @@
 development:
+  #facebook
   FACEBOOK_KEY: 180540239036352
   FACEBOOK_SECRET: cccf8ccf2d134bdc69160b154f27e465
-  BILLPLZ_KEY: f236efbc-8665-4599-a1c2-5327082504dc
-  BILLPLZ_APPID: 6xaolp9e
+  #billplz
+  BILLPLZ_KEY: 09f27728-b960-44ce-a749-6e195d338469
+  BILLPLZ_APPID: 5jjwmaah
+  #braintree
+  MERCHANT_ID: bhxytzxwxg78c9ff
+  PUBLIC_KEY: p5c32cm6fj72rycp
+  PRIVATE_KEY:  7e2e64a5e7eac442e87172cccd569c3e
