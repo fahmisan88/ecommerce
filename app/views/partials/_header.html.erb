@@ -5,11 +5,18 @@
                 <div class="col-md-8">
                     <div class="user-menu">
                         <ul>
-                            <li><a href="#"><i class="fa fa-user"></i> My Account</a></li>
+                            <% if current_user %>
+                            <li><a href="<%= edit_user_path(current_user)%>"><i class="fa fa-user"></i> My Account</a></li>
+                            <% else %>
+                            <% end %>
                             <li><a href="#"><i class="fa fa-heart"></i> Wishlist</a></li>
-                            <li><a href="cart.html"><i class="fa fa-user"></i> My Cart</a></li>
-                            <li><a href="checkout.html"><i class="fa fa-user"></i> Checkout</a></li>
-                            <li><a href="#"><i class="fa fa-user"></i> Login</a></li>
+                            <li><a href="<%= cart_path(:item)%>"><i class="fa fa-shopping-cart"></i> My Cart </a></li>
+                            <% if current_user %>
+                            <li><a href="<%= signout_path %>"><i class="fa fa-user"></i> Logout</a></li>
+                            <% else %>
+                            <li><a href="<%= new_session_path %>"><i class="fa fa-user"></i> Login</a></li>
+                            <li><a href="<%= new_user_path %>"><i class="fa fa-user"></i> Sign Up</a></li>
+                            <% end %>
                         </ul>
                     </div>
                 </div>
@@ -38,7 +45,7 @@
                 </div>
             </div>
         </div>
-    </div> <!-- End header area -->
+    </div>
 
     <div class="site-branding-area">
         <div class="container">
@@ -51,12 +58,12 @@
 
                 <div class="col-sm-6">
                     <div class="shopping-item">
-                        <a href="cart.html">Cart - <span class="cart-amunt">RM 0</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">0</span></a>
+                        <a href="<%= cart_path(:item) %>">Cart - <span class="cart-amunt">RM 0</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">0</span></a>
                     </div>
                 </div>
             </div>
         </div>
-    </div> <!-- End site branding area -->
+    </div>
 
     <div class="mainmenu-area">
         <div class="container">
@@ -73,8 +80,7 @@
                     <ul class="nav navbar-nav">
                         <li><a href="/">Home</a></li>
                         <li><a href="/items">Shop page</a></li>
-                        <li><a href="cart.html">Cart</a></li>
-                        <li><a href="checkout.html">Checkout</a></li>
+                        <li><%= link_to "Cart", cart_path(:item) %></li>
                         <li><a href="#">Category</a></li>
                         <li><a href="/about">About Us</a></li>
                         <li><a href="#">Contact</a></li>
