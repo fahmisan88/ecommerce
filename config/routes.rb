@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   get :about, to: 'static_pages#about'
+  get :contact, to: 'static_pages#contact'
   root to:'landing#index'
 
   resources :ordered_items, only: [:create, :update, :destroy]

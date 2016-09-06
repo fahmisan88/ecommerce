@@ -1,36 +1,98 @@
-<div class="header">
 
-<nav class="navbar navbar-default">
-   <div class="container-fluid">
-     <div class="navbar-header">
-       <%= link_to "Evil Commerce", root_path, class: "navbar-brand"%>
-       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#header-dropdown" aria-expanded="false">
-         <span class="sr-only">Toggle navigation</span>
-         <span class="icon-bar"></span>
-         <span class="icon-bar"></span>
-         <span class="icon-bar"></span>
-       </button>
-     </div>
+    <div class="header-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="user-menu">
+                        <ul>
+                            <% if current_user %>
+                            <li><a href="<%= edit_user_path(current_user)%>"><i class="fa fa-user"></i> My Account</a></li>
+                            <% else %>
+                            <% end %>
+                            <li><a href="#"><i class="fa fa-heart"></i> Wishlist</a></li>
+                            <li><a href="<%= cart_path(:item)%>"><i class="fa fa-shopping-cart"></i> My Cart </a></li>
+                            <% if current_user %>
+                            <li><a href="<%= signout_path %>"><i class="fa fa-user"></i> Logout</a></li>
+                            <% else %>
+                            <li><a href="<%= new_session_path %>"><i class="fa fa-user"></i> Login</a></li>
+                            <li><a href="<%= new_user_path %>"><i class="fa fa-user"></i> Sign Up</a></li>
+                            <% end %>
+                        </ul>
+                    </div>
+                </div>
 
+                <div class="col-md-4">
+                    <div class="header-right">
+                        <ul class="list-unstyled list-inline">
+                            <li class="dropdown dropdown-small">
+                                <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"><span class="key">currency:</span><span class="value">MYR </span><b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">MYR</a></li>
+                                    <li><a href="#">USD</a></li>
+                                    <li><a href="#">GBP</a></li>
+                                </ul>
+                            </li>
 
+                            <li class="dropdown dropdown-small">
+                                <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"><span class="key">language :</span><span class="value">English </span><b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">English</a></li>
+                                    <li><a href="#">Malay</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-     <div class="collapse navbar-collapse" id="header-dropdown">
-       <ul class="nav navbar-nav navbar-right">
+    <div class="site-branding-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="logo">
+                        <h1><a href="/">e<span>Electronics</span></a></h1>
+                    </div>
+                </div>
 
-         <li><span class='fa-li fa fa-shopping-cart '></span><%= link_to "Shopping Cart", cart_path(:item) %></li>
-         <li><%= link_to "About", about_path %></li>
+                <div class="col-sm-6">
+                    <div class="shopping-item">
+                        <a href="<%= cart_path(:item) %>">Cart - <span class="cart-amunt">RM 0</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">0</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-         <%if current_user %>
-          <li><a><%="#{current_user.username}"%></a></li>
-          <li><%= link_to "Logout",signout_path %></li>
-         <%else%>
-         <li><a href="<%= new_user_path %>">Sign Up<span class="sr-only">(current)</span></a></li>
-         <li><a href="<%= new_session_path %>">Log In<span class="sr-only"></span></a></li>
+    <div class="mainmenu-area">
+        <div class="container">
+            <div class="row">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/items">Shop page</a></li>
+                        <li><%= link_to "Cart", cart_path(:item) %></li>
+                        <li><a href="#">Category</a></li>
+                        <li><a href="/about">About Us</a></li>
+                        <li><a href="/contact">Contact</a></li>
 
-         <%end%>
-
-       </ul>
-     </div>
-   </div>
- </nav>
-</div>
+                    </ul>
+                    <div class="navbar-form navbar-right">
+                      <%= form_tag(items_path, method: "get", id: "search-form") do |f| %>
+                      <%= search_field_tag :search, params[:search], placeholder: "Search Products", class: "form-control" %>
+                      <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+                      <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

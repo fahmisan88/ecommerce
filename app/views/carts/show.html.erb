@@ -1,64 +1,174 @@
-<h1>Your Cart</h1>
+<div class="single-product-area">
+  <div class="zigzag-bottom"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
 
-<% if @items.empty? %>
-  <h2>Your Cart Is Currently Empty</h2>
-<% else %>
-<% end %>
-
-<ul>
-  <% @items.each do |item| %>
-  <li>
-    <%= link_to item.item_name, item %>
-    <br>
-    <%= item.item_description %>
-    <br>
-    <%= number_to_currency(item.price, :unit => 'RM') %>
-    <br>
-
-    <%= form_tag update_item_path(id: item.id), method: :patch do%>
-      <div class="row" >
-
-        <span class="small-1 large-1 columns pull-left">
-          <%= label_tag "Quantity:", nil, class: "right inline" %>
-        </span>
-
-        <span class="small-1 large-1 columns pull-left">
-          <%= text_field_tag :quantity, item.quantity %>
-        </span>
-
-        <span class="small-1 large-1 columns pull-left">
-          <%= submit_tag 'Update', class: "button" %>
-        </span>
-
+        <div class="single-sidebar">
+          <h2 class="sidebar-title">Similar Products</h2>
+          <div class="thubmnail-recent">
+            <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
+            <h2><a href="single-product.html">Sony Smart TV - 2015</a></h2>
+            <div class="product-sidebar-price">
+              <ins>$700.00</ins> <del>$800.00</del>
+            </div>
+          </div>
+          <div class="thubmnail-recent">
+            <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
+            <h2><a href="single-product.html">Sony Smart TV - 2015</a></h2>
+            <div class="product-sidebar-price">
+              <ins>$700.00</ins> <del>$800.00</del>
+            </div>
+          </div>
+          <div class="thubmnail-recent">
+            <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
+            <h2><a href="single-product.html">Sony Smart TV - 2015</a></h2>
+            <div class="product-sidebar-price">
+              <ins>$700.00</ins> <del>$800.00</del>
+            </div>
+          </div>
+          <div class="thubmnail-recent">
+            <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
+            <h2><a href="single-product.html">Sony Smart TV - 2015</a></h2>
+            <div class="product-sidebar-price">
+              <ins>$700.00</ins> <del>$800.00</del>
+            </div>
+          </div>
+        </div>
       </div>
 
-    <%end%>
+      <div class="col-md-8">
+        <div class="product-content-right">
+          <div class="woocommerce">
+            <form method="post" action="#">
+              <table cellspacing="0" class="shop_table cart">
+                <thead>
+                  <tr>
+                    <th class="product-remove">&nbsp;</th>
+                    <th class="product-thumbnail">&nbsp;</th>
+                    <th class="product-name">Product</th>
+                    <th class="product-price">Price</th>
+                    <th class="product-quantity">Quantity</th>
+                    <th class="product-subtotal">Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% if @items.empty? %>
+                  <h2>Your Cart Is Currently Empty</h2>
+                  <% else %>
+                  <% end %>
+                  <% @items.each do |item| %>
+                  <tr class="cart_item">
+                    <td class="product-remove">
+                      <%= link_to "x", remove_item_path(id: item), method: :delete, title: "Remove this item", class: "remove" %>
+                    </td>
 
-    <br>
-    <%= link_to "Remove item from cart", remove_item_path(id: item), method: :delete %>
-    <br><br>
-  </li>
+                    <td class="product-thumbnail">
+                      <a href="<%=item_path(item)%>"><%= image_tag 'nothing.jpeg', alt:"",class:"product-thumb"%></a>
+                    </td>
 
-  <% end %>
-  <h3>Total: <%=@total_price%></h3>
+                    <td class="product-name">
+                      <%= link_to item.item_name, item %>
+                    </td>
 
-  <%= link_to "Continue Shopping", items_path, class: "btn btn-primary" %>
+                    <td class="product-price">
+                      <%= number_to_currency(item.price, :unit => 'RM') %>
+                    </td>
 
-  <% if @items.empty? %>
+                    <td class="product-quantity">
+                      <div class="quantity buttons_added">
+                        <input type="button" class="minus" value="-">
+                        <%= text_field_tag :quantity, item.quantity, type: "number" %>
+                        <input type="button" class="plus" value="+">
+                      </div>
+                    </td>
 
-  <% else %>
-    <% if current_user %>
-    <!-- <a class="button primary back" href="/checkouts/new">
-      <span>CHECKOUT</span>
-    </a> -->
-      <%= link_to "Checkout", new_checkout_path, method: :get, class: "btn btn-primary" %>
-    <% else %>
-      <p>You must login to Checkout your items</p>
-    <%end%>
 
-  <% end %>
+                    <td class="product-subtotal">
+                      <span class="amount">RM<%=item.price*=item.quantity.to_i%></span>
+                    </td>
+                  </tr>
+                  <%end%>
+                  <tr>
+                    <td class="actions" colspan="6">
+                      <div class="coupon">
+                        <label for="coupon_code"></label>
+                        <input type="text" placeholder="Promo code" value="" id="coupon_code" class="input-text" name="coupon_code">
+                        <input type="submit" value="Enter Code" name="apply_coupon" class="button">
+                      </div>
+                      <%= link_to "Continue Shopping", items_path, class: "add_to_cart_button" %>
+                      <% if current_user %>
+                      <%= link_to "Proceed to Checkout", new_checkout_path, method: :get, class: "add_to_cart_button" %>
+                      <%else%>
+                      <%= link_to "Login first to Checkout", new_session_path, class: "add_to_cart_button" %>
+                      <%end%>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
 
-</ul>
+
+            </form>
+            <br>
+            <div class="cart-collaterals">
+              <div class="cross-sells">
+                <h2>You may be interested in...</h2>
+                <ul class="products">
+                  <li class="product">
+                    <a href="single-product.html">
+                      <img width="325" height="325" alt="T_4_front" class="attachment-shop_catalog wp-post-image" src="img/product-2.jpg">
+                      <h3>Ship Your Idea</h3>
+                      <span class="price"><span class="amount">£20.00</span></span>
+                    </a>
+
+
+                    <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="22" rel="nofollow" href="single-product.html">Select options</a>
+                  </li>
+
+                  <li class="product">
+                    <a href="single-product.html">
+                      <img width="325" height="325" alt="T_4_front" class="attachment-shop_catalog wp-post-image" src="img/product-4.jpg">
+                      <h3>Ship Your Idea</h3>
+                      <span class="price"><span class="amount">£20.00</span></span>
+                    </a>
+
+                    <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="22" rel="nofollow" href="single-product.html">Select options</a>
+                  </li>
+                </ul>
+              </div>
+
+
+              <div class="cart_totals ">
+                <h2>Cart Totals</h2>
+
+                <table cellspacing="0">
+                  <tbody>
+                    <tr class="cart-subtotal">
+                      <th>Cart Subtotal</th>
+                      <td><span class="amount">RM<%=@total_price%></span></td>
+                    </tr>
+
+                    <tr class="shipping">
+                      <th>Shipping and Handling</th>
+                      <td>Free Shipping</td>
+                    </tr>
+
+                    <tr class="order-total">
+                      <th>GRAND TOTAL</th>
+                      <td><strong><span class="amount">RM<%=@total_price%></span></strong> </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
 <script>
 braintree.setup("<%=@client_token%>", 'dropin', {

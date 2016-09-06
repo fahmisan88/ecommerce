@@ -1,6 +1,6 @@
 
 .about-background {
-  background-color: black;
+  background-image: asset-url("market.jpeg");
   height: 50vh;
   width: 100%;
   background-position: 50% 50%;
@@ -12,8 +12,8 @@
 }
 
 .about-background-2 {
-  background-color: #b3ffb3;
-  height: 50vh;
+  background-color: #1abc9c;
+  height: 300px;
   width: 100%;
   background-position: 50% 50%;
   background-repeat: no-repeat;

@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   def new
     @user = User.new
   end
@@ -17,10 +18,12 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find_by(params(:id))
+
   end
 
   def update
     @user = User.find_by(params(:id))
+    
     if @user.update(user_params)
       redirect_to root_path
       flash[:success]="Account Updated"
