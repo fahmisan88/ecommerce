@@ -83,6 +83,7 @@
                       </div>
                     </td>
 
+
                     <td class="product-subtotal">
                       <span class="amount">RM<%=item.price*=item.quantity.to_i%></span>
                     </td>
@@ -97,7 +98,7 @@
                       </div>
                       <%= link_to "Continue Shopping", items_path, class: "add_to_cart_button" %>
                       <% if current_user %>
-                      <%= link_to "Proceed to Checkout", new_session_path, class: "add_to_cart_button" %>
+                      <%= link_to "Proceed to Checkout", new_checkout_path, method: :get, class: "add_to_cart_button" %>
                       <%else%>
                       <%= link_to "Login first to Checkout", new_session_path, class: "add_to_cart_button" %>
                       <%end%>
@@ -105,6 +106,7 @@
                   </tr>
                 </tbody>
               </table>
+
 
             </form>
             <br>
@@ -118,6 +120,7 @@
                       <h3>Ship Your Idea</h3>
                       <span class="price"><span class="amount">£20.00</span></span>
                     </a>
+
 
                     <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="22" rel="nofollow" href="single-product.html">Select options</a>
                   </li>
@@ -164,3 +167,12 @@
     </div>
   </div>
 </div>
+
+
+
+<script>
+braintree.setup("<%=@client_token%>", 'dropin', {
+  container: 'dropin-container',
+  form: 'payment-form'
+});
+</script>
