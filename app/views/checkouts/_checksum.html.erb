@@ -1,0 +1,52 @@
+<table cellspacing="0" class="shop_table cart">
+  <thead>
+    <tr>
+      <th class="product-thumbnail">&nbsp;</th>
+      <th class="product-name">Product</th>
+      <th class="product-price">Price</th>
+      <th class="product-quantity">Quantity</th>
+      <th class="product-subtotal">Total</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <% @items.each do |item| %>
+    <tr class="cart_item">
+      <td class="product-thumbnail">
+        <a href="<%=item_path(item)%>"><%= image_tag 'nothing.jpeg', alt:"",class:"product-thumb"%></a>
+      </td>
+      <td class="product-name">
+        <%= link_to item.item_name, item %>
+      </td>
+
+      <td class="product-price">
+        <%= number_to_currency(item.price, :unit => 'RM') %>
+      </td>
+
+      <td class="product-quantity">
+        <div class="quantity buttons_added">
+          <%= item.quantity %>
+        </div>
+      </td>
+
+      <td class="product-subtotal">
+        <span class="amount">RM<%=item.price*=item.quantity.to_i%></span>
+      </td>
+    </tr>
+    <%end%>
+
+  </tbody>
+</table>
+
+<div class="cart_totals ">
+  <h2>Total:</h2>
+
+  <table cellspacing="0">
+    <tbody>
+      <tr class="cart-subtotal">
+        <th>Grand Total</th>
+        <td><strong><span class="amount">RM<%=@total_price%></span></strong></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

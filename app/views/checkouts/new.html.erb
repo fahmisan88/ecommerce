@@ -1,34 +1,49 @@
-<div class="form">
-  <%= form_for(:payment, url: checkouts_path, html: { id: "payment-form" }) do |f| %>
-    <div class="form-group">
-      <header>
-        <h1>Hi, let's pay for the stuffs you want.</h1>
-        <p>
-          Give me all your money!
-        </p>
-      </header>
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title">
+        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          1. Checkout Summary
+        </a>
+      </h4>
     </div>
+    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+          <%= render partial: "checkouts/checksum", locals: {item: @items }%>
 
-    <div class="form-group", id="dropin-container">
-    </div>
+          <button type="button" class="collapsed btn btn-primary" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            Confirm
+          </button>
 
-    <div class="form-group">
-      <h4>Amount: RM<%= @total_price %></h4>
+      </div>
     </div>
-
-    <div class="form-group">
-      <%= f.submit "Pay", class: "btn btn-success btn-lg" %>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingTwo">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          2. Shipping Address
+        </a>
+      </h4>
     </div>
-  <% end %>
+    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div class="panel-body">
+        <%= render partial: "users/edit", locals: {user: current_user} %>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingThree">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree" id="collapse3">
+          3. Payment
+        </a>
+      </h4>
+    </div>
+    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+      <div class="panel-body">
+       <%= render partial: "checkouts/payment", locals: {total_price: @total_price}%>
+      </div>
+    </div>
+  </div>
 </div>
-
-<!-- <div class="hidden" id="bt-token">
-  <%= @client_token %>
-</div> -->
-
-<script>
-  braintree.setup("<%=@client_token%>", 'dropin', {
-    container: 'dropin-container',
-    form: 'payment-form'
-  });
-</script>

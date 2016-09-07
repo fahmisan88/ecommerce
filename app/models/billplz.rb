@@ -22,7 +22,7 @@ class Billplz
 
   def self.check_status(order_id)
     order = order.find(order_id)
-    url = "https://www.billplz.com/api/v3/bills" + order.bill_id
+    url = "https://www.billplz.com/api/v3/bills/" + order.bill_id
     arguments = { headers: {'Content-Type' => 'application/json', 'Accept' => 'application/json'},
                   basic_auth: { username: ENV["BILLPLZ_KEY"]}
                   }
