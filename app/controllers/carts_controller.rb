@@ -1,18 +1,9 @@
 class CartsController < ApplicationController
-  before_action :load_cart
+  before_action :load_cart, except: [:show]
+  skip_before_action :furnish_cart_items, except: [:show]
   after_action :write_cart, only: [:add_item, :remove_item, :update_item]
 
   def show
-    @items = []
-    @total_price = 0.0;
-
-    @cart.each do |item_id,quantity|
-      item = Item.find_by(id: item_id)
-      item.define_singleton_method(:quantity) { quantity }
-      price = item.price * quantity.to_f
-      @total_price += price
-      @items << item
-    end
   end
 
   def add_item
@@ -39,6 +30,8 @@ class CartsController < ApplicationController
     @cart.delete params[:id]
     redirect_to cart_path(:item)
   end
+
+  private
 
   def load_cart
     if cookies[:cart]

@@ -58,7 +58,9 @@
 
                 <div class="col-sm-6">
                     <div class="shopping-item">
-                        <a href="<%= cart_path(:item) %>">Cart - <span class="cart-amunt">RM 0</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">0</span></a>
+
+                        <a href="<%= cart_path(:item) %>">Cart - <span class="cart-amunt">RM<%=@total_price%></span> <i class="fa fa-shopping-cart"></i> <span class="product-count"><%= @quantity%></span></a>
+
                     </div>
                 </div>
             </div>
