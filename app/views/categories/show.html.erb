@@ -3,19 +3,18 @@
     <div class="row">
       <div class="col-md-12">
         <div class="product-bit-title text-center">
-          <h2>SHOP</h2>
+          <h2> <%= @category.name %> </h2>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-
 <div class="single-product-area">
   <div class="zigzag-bottom"></div>
   <div class="container">
     <div class="row">
-      <% @items.each do |item| %>
+      <% @category.items.each do |item| %>
       <div class="col-md-3 col-sm-6">
         <div class="single-shop-product">
           <div class="product-upper">
@@ -99,11 +98,13 @@
       <div class="col-md-3 col-sm-6">
         <div class="footer-menu">
           <h2 class="footer-wid-title">Categories</h2>
-          <% @categories.each do |category| %>
           <ul>
-            <li><a href="<%=category_path(category)%>"><%= category.name %></a></li>
+            <li><a href="">Smartphone</a></li>
+            <li><a href="">Home accessories</a></li>
+            <li><a href="">LED TV</a></li>
+            <li><a href="">Computer</a></li>
+            <li><a href="">Gadgets</a></li>
           </ul>
-          <%end%>
         </div>
       </div>
 

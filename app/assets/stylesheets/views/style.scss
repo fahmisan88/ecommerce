@@ -265,7 +265,9 @@ z-index: 9;
 
 
 .product-f-image {
+    display: flex;
     position: relative;
+    height: 280px;
 }
 .product-hover {
     height: 100%;
@@ -657,6 +659,8 @@ input[type="submit"]:hover, button[type=submit]:hover {background-color: #222}
     display: none;
 }
 .product-main-img {
+    height: 350px;
+    display: flex;
     margin-bottom: 20px;
 }
 .product-gallery {
@@ -993,6 +997,12 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button{background
 .single-shop-product h2 {
     font-size: 20px;
     margin: 10px 0;
+}
+
+.product-upper{
+  height:262px;
+  width:262px;
+  display:flex;
 }
 .product-option-shop {
     margin-top: 15px;
