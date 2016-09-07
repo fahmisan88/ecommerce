@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
 
   def index
+    @categories= Category.all
     if params[:search]
       Item.reindex
       @items = Item.search(params[:search])
@@ -48,6 +49,8 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @categories= Category.all
+    @items= Item.all
     @item = Item.find_by(id: params[:id])
   end
 

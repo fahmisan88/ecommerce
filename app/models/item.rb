@@ -2,7 +2,7 @@ class Item < ApplicationRecord
   has_many :orders, through: :ordered_items
   has_many :ordered_items
   mount_uploader :image, ImageUploader
-  belongs_to :category
+  belongs_to :category, :foreign_key => 'cat_id'
   searchkick
 end
 

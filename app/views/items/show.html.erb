@@ -86,100 +86,31 @@
               </div>
             </div>
           </div>
+<br>
+<br>
 
 
           <div class="related-products-wrapper">
             <h2 class="related-products-title">Related Products</h2>
             <div class="related-products-carousel">
+              <% @items.limit(5).each do |item| %>
               <div class="single-product">
                 <div class="product-f-image">
-                  <img src="img/product-1.jpg" alt="">
+                  <img src="<%= item.image %>" alt="">
                   <div class="product-hover">
                     <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
                     <a href="" class="view-details-link"><i class="fa fa-link"></i> See details</a>
                   </div>
                 </div>
 
-                <h2><a href="">Sony Smart TV - 2015</a></h2>
+                <h2><a href="<%=item_path(item)%>"><%= item.item_name %></a></h2>
 
                 <div class="product-carousel-price">
-                  <ins>$700.00</ins> <del>$800.00</del>
+                  <ins>RM<%= sprintf('%.2f',item.price )%></ins> <del>RM<%= sprintf('%.2f',item.price+=200 )%></del>
                 </div>
               </div>
-              <div class="single-product">
-                <div class="product-f-image">
-                  <img src="img/product-2.jpg" alt="">
-                  <div class="product-hover">
-                    <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                    <a href="" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                  </div>
-                </div>
+              <%end%>
 
-                <h2><a href="">Apple new mac book 2015 March :P</a></h2>
-                <div class="product-carousel-price">
-                  <ins>$899.00</ins> <del>$999.00</del>
-                </div>
-              </div>
-              <div class="single-product">
-                <div class="product-f-image">
-                  <img src="img/product-3.jpg" alt="">
-                  <div class="product-hover">
-                    <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                    <a href="" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                  </div>
-                </div>
-
-                <h2><a href="">Apple new i phone 6</a></h2>
-
-                <div class="product-carousel-price">
-                  <ins>$400.00</ins> <del>$425.00</del>
-                </div>
-              </div>
-              <div class="single-product">
-                <div class="product-f-image">
-                  <img src="img/product-4.jpg" alt="">
-                  <div class="product-hover">
-                    <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                    <a href="" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                  </div>
-                </div>
-
-                <h2><a href="">Sony playstation microsoft</a></h2>
-
-                <div class="product-carousel-price">
-                  <ins>$200.00</ins> <del>$225.00</del>
-                </div>
-              </div>
-              <div class="single-product">
-                <div class="product-f-image">
-                  <img src="img/product-5.jpg" alt="">
-                  <div class="product-hover">
-                    <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                    <a href="" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                  </div>
-                </div>
-
-                <h2><a href="">Sony Smart Air Condtion</a></h2>
-
-                <div class="product-carousel-price">
-                  <ins>$1200.00</ins> <del>$1355.00</del>
-                </div>
-              </div>
-              <div class="single-product">
-                <div class="product-f-image">
-                  <img src="img/product-6.jpg" alt="">
-                  <div class="product-hover">
-                    <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                    <a href="" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                  </div>
-                </div>
-
-                <h2><a href="">Samsung gallaxy note 4</a></h2>
-
-                <div class="product-carousel-price">
-                  <ins>$400.00</ins>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -223,13 +154,11 @@
       <div class="col-md-3 col-sm-6">
         <div class="footer-menu">
           <h2 class="footer-wid-title">Categories</h2>
+          <% @categories.each do |category| %>
           <ul>
-            <li><a href="">Mobile Phone</a></li>
-            <li><a href="">Home accesseries</a></li>
-            <li><a href="">LED TV</a></li>
-            <li><a href="">Computer</a></li>
-            <li><a href="">Gadets</a></li>
+            <li><a href="<%=category_path(category)%>"><%= category.name %></a></li>
           </ul>
+          <%end%>
         </div>
       </div>
 
@@ -251,7 +180,7 @@
     <div class="row">
       <div class="col-md-8">
         <div class="copyright">
-          <p>&copy; 2015 eElectronics. All Rights Reserved. Coded with <i class="fa fa-heart"></i> by FSWD MaGIC Academy</a></p>
+          <p>&copy; 2016 eElectronics. All Rights Reserved. Coded with <i class="fa fa-heart"></i> by FSWD MaGIC Academy</a></p>
         </div>
       </div>
 
