@@ -43,7 +43,7 @@ gem 'httparty'
 gem 'searchkick'
 gem 'figaro'
 gem "braintree"
-# gem 'responders'
+gem 'responders'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
