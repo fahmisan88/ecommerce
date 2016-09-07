@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  respond_to :js
 
   def new
     @user = User.new
@@ -16,17 +17,16 @@ class UsersController < ApplicationController
 
   end
 
-  def edit
-    @user = User.find_by(params(:id))
-
-  end
+  # def edit
+  #   @user = User.find_by(id: params[:id])
+  #
+  # end
 
   def update
-    @user = User.find_by(params(:id))
-    
+    @user = User.find_by(id: params[:id])
+
     if @user.update(user_params)
-      redirect_to root_path
-      flash[:success]="Account Updated"
+      flash.now[:success]="Account Updated"
     else
       redirect_to edit_user_path
     end
@@ -42,7 +42,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-   params.require(:user).permit(:email, :password, :username)
+   params.require(:user).permit(:email, :password, :username, :shipping_address, :shipping_postcode)
   end
 
 end
