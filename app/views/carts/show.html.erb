@@ -40,7 +40,7 @@
       <div class="col-md-8">
         <div class="product-content-right">
           <div class="woocommerce">
-            <form method="post" action="#">
+
               <table cellspacing="0" class="shop_table cart">
                 <thead>
                   <tr>
@@ -80,41 +80,42 @@
 
                       <td class="product-quantity">
                         <div class="quantity buttons_added">
-                          <input type="button" class="minus" value="-">
-                          <%= text_field_tag :quantity, item.quantity, type: "number" %>
-                          <input type="button" class="plus" value="+">
+                        <%= render partial: "carts/update", locals: {item: item} %>
                         </div>
                       </td>
-
 
                       <td class="product-subtotal">
                         <span class="amount">RM<%=item.price*=item.quantity.to_i%></span>
                       </td>
                     </tr>
                   <%end%>
-                  <tr>
-                    <td class="actions" colspan="6">
-                      <div class="coupon">
-                        <label for="coupon_code"></label>
-                        <input type="text" placeholder="Promo code" value="" id="coupon_code" class="input-text" name="coupon_code">
-                        <input type="submit" value="Enter Code" name="apply_coupon" class="button">
-                      </div>
-                      <%= link_to "Continue Shopping", items_path, class: "add_to_cart_button" %>
-                      <% if current_user %>
-                        <% if @items.empty? %>
-                        <% else %>
-                          <%= link_to "Proceed to Checkout", new_checkout_path, method: :get, class: "add_to_cart_button" %>
-                        <% end %>
-                      <%else%>
-                        <%= link_to "Login first to Checkout", new_session_path, class: "add_to_cart_button" %>
-                      <%end%>
+                    <tr>
+                      <td class="actions" colspan="6">
+                        <div class="coupon">
+                          <label for="coupon_code"></label>
+                          <input type="text" placeholder="Promo code" value="" id="coupon_code" class="input-text" name="coupon_code">
+                          <input type="submit" value="Enter Code" name="apply_coupon" class="button">
+                        </div>
+
+                        <%= link_to "Continue Shopping", items_path, class: "add_to_cart_button" %>
+                        <% if current_user %>
+
+                          <% if @items.empty? %>
+
+                          <% else %>
+                            <%= link_to "Proceed to Checkout", new_checkout_path, method: :get, class: "add_to_cart_button" %>
+                          <% end %>
+
+                        <%else%>
+                          <%= link_to "Login first to Checkout", new_session_path, class: "add_to_cart_button" %>
+                        <%end%>
                     </td>
                   </tr>
                 </tbody>
               </table>
 
 
-            </form>
+
             <br>
             <div class="cart-collaterals">
               <div class="cross-sells">
@@ -126,8 +127,6 @@
                       <h3>Ship Your Idea</h3>
                       <span class="price"><span class="amount">$20.00</span></span>
                     </a>
-
-
                     <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="22" rel="nofollow" href="single-product.html">Select options</a>
                   </li>
 

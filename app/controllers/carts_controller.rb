@@ -1,7 +1,7 @@
 class CartsController < ApplicationController
   before_action :load_cart, except: [:show]
   skip_before_action :furnish_cart_items, except: [:show]
-  after_action :write_cart, only: [:add_item, :remove_item, :update_item]
+  after_action :write_cart, only: [:minus, :plus, :add_item, :remove_item, :update_item]
 
   def show
   end
@@ -13,7 +13,7 @@ class CartsController < ApplicationController
       quantityOld = @cart[params[:id]].to_i
       @cart[params[:id]] = quantityOld + quantity
     else
-      @cart[params[:id]] = params[:quantity]
+      @cart[params[:id]] = params[:quantity].to_i
     end
     flash[:success] = "Added To Cart"
   end
@@ -29,6 +29,20 @@ class CartsController < ApplicationController
   def remove_item
     @cart.delete params[:id]
     redirect_to cart_path(:item)
+  end
+
+  def plus
+    quantity = @cart[params[:id]]
+    @cart[params[:id]] = quantity + 1
+  end
+
+  def minus
+    if @cart[params[:id]] = 1
+      
+    else
+      quantity = @cart[params[:id]]
+      @cart[params[:id]] = quantity - 1
+    end
   end
 
   private
