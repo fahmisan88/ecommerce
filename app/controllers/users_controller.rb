@@ -12,7 +12,8 @@ class UsersController < ApplicationController
       redirect_to root_path
       flash[:success]="User created"
     else
-      redirect_to root_path
+      redirect_to new_user_path
+      flash.now[:danger]="Error"
     end
 
   end
@@ -42,7 +43,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-   params.require(:user).permit(:email, :password, :username, :shipping_address, :shipping_postcode)
+   params.require(:user).permit(:email, :password,:password_confirmation, :username, :shipping_address, :shipping_postcode)
   end
 
 end

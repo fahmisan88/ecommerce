@@ -16,7 +16,7 @@ class CheckoutsController < ApplicationController
     )
 
     if result.success?
-      order = current_user.orders.create(total: result.transaction.amount, transaction_id: result.transaction.id)
+      order = current_user.orders.create(total: result.transaction.amount, transaction_id: result.transaction.id, status: "paid")
 
       @items.each do |item|
         order.ordered_items.create(item_id: item.id, quantity: item.quantity)
