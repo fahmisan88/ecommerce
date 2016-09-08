@@ -1,4 +1,4 @@
-<%= form_for(@user, url: user_path, html: { id: "users-create-form" }) do |f| %>
+<%= form_for(current_user, url: user_path(current_user), html: { id: "users-create-form" }) do |f| %>
 
 <h1 class="text-center">
   Edit Account
@@ -12,6 +12,16 @@
   <div class="form-group">
     <h4> <%= f.label :password_confirmation_field, "Password Confirmation" %> </h4>
     <%= f.password_field :password_confirmation, id: "user_password_field", class: 'form-control' %>
+  </div>
+  
+  <div class="form-group">
+    <h4> <%= f.label :shipping_address_field, "Address" %> </h4>
+    <%= f.text_field :shipping_address, id: "shipping_address_field", class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <h4> <%= f.label :shipping_postcode_field, "Postcode" %> </h4>
+    <%= f.text_field :shipping_postcode, id: "shipping_postcode_field", class: 'form-control' %>
   </div>
 
 

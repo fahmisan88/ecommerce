@@ -53,41 +53,43 @@
                   </tr>
                 </thead>
                 <tbody>
+
                   <% if @items.empty? %>
-                  <h2>Your Cart Is Currently Empty</h2>
+                    <h2>Your Cart Is Currently Empty</h2>
                   <% else %>
                   <% end %>
+
                   <% @items.each do |item| %>
-                  <tr class="cart_item">
-                    <td class="product-remove">
-                      <%= link_to "x", remove_item_path(id: item), method: :delete, title: "Remove this item", class: "remove" %>
-                    </td>
+                    <tr class="cart_item">
+                      <td class="product-remove">
+                        <%= link_to "x", remove_item_path(id: item), method: :delete, title: "Remove this item", class: "remove" %>
+                      </td>
 
-                    <td class="product-thumbnail">
-                      <a href="<%=item_path(item)%>"><%= image_tag 'nothing.jpeg', alt:"",class:"product-thumb"%></a>
-                    </td>
+                      <td class="product-thumbnail">
+                        <a href="<%=item_path(item)%>"><%= image_tag 'nothing.jpeg', alt:"",class:"product-thumb"%></a>
+                      </td>
 
-                    <td class="product-name">
-                      <%= link_to item.item_name, item %>
-                    </td>
+                      <td class="product-name">
+                        <%= link_to item.item_name, item %>
+                      </td>
 
-                    <td class="product-price">
-                      <%= number_to_currency(item.price, :unit => 'RM') %>
-                    </td>
+                      <td class="product-price">
+                        <%= number_to_currency(item.price, :unit => 'RM') %>
+                      </td>
 
-                    <td class="product-quantity">
-                      <div class="quantity buttons_added">
-                        <input type="button" class="minus" value="-">
-                        <%= text_field_tag :quantity, item.quantity, type: "number" %>
-                        <input type="button" class="plus" value="+">
-                      </div>
-                    </td>
+                      <td class="product-quantity">
+                        <div class="quantity buttons_added">
+                          <input type="button" class="minus" value="-">
+                          <%= text_field_tag :quantity, item.quantity, type: "number" %>
+                          <input type="button" class="plus" value="+">
+                        </div>
+                      </td>
 
 
-                    <td class="product-subtotal">
-                      <span class="amount">RM<%=item.price*=item.quantity.to_i%></span>
-                    </td>
-                  </tr>
+                      <td class="product-subtotal">
+                        <span class="amount">RM<%=item.price*=item.quantity.to_i%></span>
+                      </td>
+                    </tr>
                   <%end%>
                   <tr>
                     <td class="actions" colspan="6">
@@ -98,9 +100,12 @@
                       </div>
                       <%= link_to "Continue Shopping", items_path, class: "add_to_cart_button" %>
                       <% if current_user %>
-                      <%= link_to "Proceed to Checkout", new_checkout_path, method: :get, class: "add_to_cart_button" %>
+                        <% if @items.empty? %>
+                        <% else %>
+                          <%= link_to "Proceed to Checkout", new_checkout_path, method: :get, class: "add_to_cart_button" %>
+                        <% end %>
                       <%else%>
-                      <%= link_to "Login first to Checkout", new_session_path, class: "add_to_cart_button" %>
+                        <%= link_to "Login first to Checkout", new_session_path, class: "add_to_cart_button" %>
                       <%end%>
                     </td>
                   </tr>
@@ -118,7 +123,7 @@
                     <a href="single-product.html">
                       <img width="325" height="325" alt="T_4_front" class="attachment-shop_catalog wp-post-image" src="img/product-2.jpg">
                       <h3>Ship Your Idea</h3>
-                      <span class="price"><span class="amount">£20.00</span></span>
+                      <span class="price"><span class="amount">$20.00</span></span>
                     </a>
 
 
@@ -129,7 +134,7 @@
                     <a href="single-product.html">
                       <img width="325" height="325" alt="T_4_front" class="attachment-shop_catalog wp-post-image" src="img/product-4.jpg">
                       <h3>Ship Your Idea</h3>
-                      <span class="price"><span class="amount">£20.00</span></span>
+                      <span class="price"><span class="amount">$20.00</span></span>
                     </a>
 
                     <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="22" rel="nofollow" href="single-product.html">Select options</a>
@@ -167,8 +172,6 @@
     </div>
   </div>
 </div>
-
-
 
 <script>
 braintree.setup("<%=@client_token%>", 'dropin', {
