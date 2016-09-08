@@ -1,5 +1,6 @@
 class CheckoutsController < ApplicationController
   before_action :get_amount
+  skip_before_action :furnish_cart_items, only: [:create]
 
   def new
     @client_token = Braintree::ClientToken.generate
@@ -27,9 +28,7 @@ class CheckoutsController < ApplicationController
       flash[:danger] = "Payment failed!"
       redirect_to root_path
     end
-
   end
-
 
   private
 

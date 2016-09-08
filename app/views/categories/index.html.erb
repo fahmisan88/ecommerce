@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="product-bit-title text-center">
-          <h2>SHOP</h2>
+          <h2>CATEGORY</h2>
         </div>
       </div>
     </div>
@@ -15,52 +15,19 @@
   <div class="zigzag-bottom"></div>
   <div class="container">
     <div class="row">
-      <% @items.each do |item| %>
       <div class="col-md-3 col-sm-6">
         <div class="single-shop-product">
-          <div class="product-upper">
-            <img src="<%= item.image %>" alt="">
-          </div>
-          <h2><a href="<%=item_path(item)%>"><%= item.item_name %></a></h2>
-          <div class="product-carousel-price">
-            <ins>RM<%= sprintf('%.2f',item.price )%></ins> <del>RM<%= sprintf('%.2f',item.price+=200 )%></del>
-          </div>
+          <% @categories.each do |category| %>
 
-          <div class="product-option-shop">
-            <%= link_to "Add To Cart", add_item_path(id: item, quantity: 1), method: :post, class: "add_to_cart_button" %>
-            <%= link_to "View Details", item_path(id: item), class: "add_to_cart_button" %>
-          </div>
+          <h2><a href="<%=category_path(category)%>"><%= category.name %></a></h2>
+
+          <%end%>
         </div>
       </div>
-      <%end%>
 
     </div>
 
-    <div class="row">
-      <div class="col-md-12">
-        <div class="product-pagination text-center">
-          <nav>
-            <ul class="pagination">
-              <li>
-                <a href="#" aria-label="Previous">
-                  <span aria-hidden="true">&laquo;</span>
-                </a>
-              </li>
-              <li><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#">5</a></li>
-              <li>
-                <a href="#" aria-label="Next">
-                  <span aria-hidden="true">&raquo;</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </div>
-    </div>
+
   </div>
 </div>
 
@@ -99,11 +66,13 @@
       <div class="col-md-3 col-sm-6">
         <div class="footer-menu">
           <h2 class="footer-wid-title">Categories</h2>
-          <% @categories.each do |category| %>
           <ul>
-            <li><a href="<%=category_path(category)%>"><%= category.name %></a></li>
+            <li><a href="">Smartphone</a></li>
+            <li><a href="">Home accessories</a></li>
+            <li><a href="">LED TV</a></li>
+            <li><a href="">Computer</a></li>
+            <li><a href="">Gadgets</a></li>
           </ul>
-          <%end%>
         </div>
       </div>
 
